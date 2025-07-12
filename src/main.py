@@ -2,7 +2,6 @@ import logging
 import re
 from pathlib import Path
 import pandas as pd
-
 from src.logging_config import setup_logger
 from src.reports import (
     export_report,
@@ -16,8 +15,6 @@ from src.utils import load_file, normalize_status
 
 
 def main():
-    setup_logger()
-    logging.info("Программа запущена")
     print("Привет! Добро пожаловать в программу работы с банковскими транзакциями.")
     print("Выберите необходимый пункт меню:")
     print("1. Получить информацию о транзакциях из JSON-файла")
