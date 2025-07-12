@@ -10,7 +10,6 @@ def process_bank_search(search: str) -> pd.DataFrame:
     pattern = re.compile(re.escape(search), re.IGNORECASE)
     return data[data["Описание"].apply(lambda x: bool(pattern.search(str(x))))]
 
-
 def process_bank_operations(data: pd.DataFrame, categories: list[str]) -> dict:
     """Подсчитывает количество транзакций по указанным категориям"""
     counts = Counter()
@@ -19,7 +18,6 @@ def process_bank_operations(data: pd.DataFrame, categories: list[str]) -> dict:
         counts[cat] = sum(filtered == cat.lower())
         return dict(counts)
     return None
-
 
 def export_report_txt(data: pd.DataFrame, filepath: str = "report.txt") -> None:
     with open(filepath, "w", encoding="utf-8") as f:
@@ -32,10 +30,8 @@ def export_report_txt(data: pd.DataFrame, filepath: str = "report.txt") -> None:
 def export_report_json(data: pd.DataFrame, filepath: str = "report.json") -> None:
     data.to_json(filepath, orient="records", force_ascii=False, indent=2)
 
-
 def export_report_xlsx(data: pd.DataFrame, filepath: str = "report.xlsx") -> None:
     data.to_excel(filepath, index=False)
-
 
 def main():
     logging.basicConfig(
@@ -43,7 +39,7 @@ def main():
     )
     print("Привет! Добро пожаловать в программу работы с банковскими транзакциями.")
     print("Выберите необходимый пункт меню:")
-    ("1. Получить информацию о транзакциях из XLSX-файла")
+    print("1. Получить информацию о транзакциях из XLSX-файла")
     choice = input("Ваш выбор: ").strip()
     if choice != "1":
         print("Пока доступен только XLSX.")
